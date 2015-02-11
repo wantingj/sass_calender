@@ -1,0 +1,91 @@
+@import mixin
+@import compass/reset
+@import extend
+
+$width: 600px
+$row-month-num: 3
+$month-gutter: 20px
+$month-width: ($width - $month-gutter * ($row-month-num - 1)) / $row-month-num
+$holiday-color: #E22F80
+
+.wrap
+	width: $width
+	margin: 0 auto
+	font-family: Arial
+
+.clear
+	clear: both
+
+//header
+.header
+	padding: 13px 0
+	.year
+		@extend %inline_block
+		font-size: 3.5em
+		width: 71%
+		color: gray
+	.logo
+		@extend %float_right
+		height: 56px
+
+//month
+.m_row
+	padding-bottom: 20px
+
+.month
+	@include myFloat
+
+	//@include myFloat(left)
+
+	//@include myFloat(right)
+	//	float: left
+	
+	width: $month-width
+	padding: 0 $month-gutter 0 0
+	&:nth-last-child(2)
+		padding: 0
+
+.m_title
+	background: #000
+	color: #fff
+	font-size: 1.4em
+	padding: 3px
+
+.en_t
+	@extend %inline_block
+	width: 71%
+
+.cn_t
+	@extend %inline_block
+
+.w_title
+	padding: 5px 0
+
+.holiday
+	color: $holiday-color
+
+.day
+	@extend %float_left
+	text-align: center
+	padding: 5px 0
+	width: $month-width / 7
+	&:first-child
+		@extend .holiday
+	&:last-child
+		@extend .holiday
+
+//footer
+.footer
+	font-size: 0.8em
+	line-height: 1.5em
+	background: #F9F9F9
+	padding: 5px 3px
+
+.info
+	@extend %inline_block
+	width: 55%
+
+.slogan
+	@extend %inline_block
+	text-align: right
+	color: grey
